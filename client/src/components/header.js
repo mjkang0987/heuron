@@ -1,5 +1,7 @@
 import {NAV} from '../libs/constants/constants';
 
+import '../styles/header.scss';
+
 export const Header = () => {
     return (
         <header>
