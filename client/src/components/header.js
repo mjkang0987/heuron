@@ -4,7 +4,7 @@ export const Header = () => {
     return (
         <header>
             <div className="header-wrap">
-                <span className="logo">로고</span>
+                <span className="logo"><a href="#" className="link-home">로고</a></span>
                 <nav>
                     <ul>
                         {NAV.map((nav, index) => <li key={`nav-${index}`}>
