@@ -1,0 +1,31 @@
+$mobile: 425;
+
+@mixin a11y {
+    position: absolute;
+    margin: -1px;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+}
+
+@mixin line-clamp($val) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: #{$val};
+    overflow: hidden;
+}
+
+@mixin mobile {
+    @media only screen and (max-width: #{$mobile}px) {
+        @content;
+    }
+}
+
+@function vw($val) {
+    @return math.div($val, $mobile) * 100vw;
+}
