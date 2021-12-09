@@ -1,16 +1,17 @@
-import {useLayoutEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import {getItems} from './libs/api/getItems';
 
-import {Header} from './components/header';
+import {Header} from './components/Header';
 import {Visual} from './components/Visual';
+import {Event} from './components/Event';
 
-import {GlobalStyles} from './styles/GlobalStyles';
+import './styles/initStyle.scss';
 
 export const App = () => {
     const [banners, setBanners] = useState(null);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         (async () => {
             const getImg = await getItems({uri: 'https://picsum.photos/v2/list'});
             setBanners(getImg);
@@ -18,9 +19,9 @@ export const App = () => {
     }, []);
     return (
         <>
-            <GlobalStyles/>
             <Header/>
             <Visual data={banners}/>
+            <Event data={banners}/>
         </>
     );
 };
