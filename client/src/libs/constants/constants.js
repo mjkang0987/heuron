@@ -15,4 +15,4 @@ export const NAV = [
         NAME: 'MENU',
         LINK: '#'
     }
-]
+];
