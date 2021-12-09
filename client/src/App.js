@@ -11,7 +11,7 @@ import './styles/initStyle.scss';
 export const App = () => {
     const [banners, setBanners] = useState(null);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         (async () => {
             const getImg = await getItems({uri: 'https://picsum.photos/v2/list'});
             setBanners(getImg);
