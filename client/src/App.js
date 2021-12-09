@@ -1,11 +1,12 @@
-import {useLayoutEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import {getItems} from './libs/api/getItems';
 
 import {Header} from './components/Header';
 import {Visual} from './components/Visual';
+import {Event} from './components/Event';
 
-import {GlobalStyles} from './styles/GlobalStyles';
+import './styles/initStyle.scss';
 
 export const App = () => {
     const [banners, setBanners] = useState(null);
@@ -18,7 +19,6 @@ export const App = () => {
     }, []);
     return (
         <>
-            <GlobalStyles/>
             <Header/>
             <Visual data={banners}/>
         </>
