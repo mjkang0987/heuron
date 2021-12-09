@@ -21,6 +21,7 @@ export const App = () => {
         <>
             <Header/>
             <Visual data={banners}/>
+            <Event data={banners}/>
         </>
     );
 };
