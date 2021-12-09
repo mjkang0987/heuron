@@ -2,7 +2,7 @@ import {useLayoutEffect, useState} from 'react';
 
 import {getItems} from './libs/api/getItems';
 
-import {Header} from './components/header';
+import {Header} from './components/Header';
 import {Visual} from './components/Visual';
 
 import {GlobalStyles} from './styles/GlobalStyles';
