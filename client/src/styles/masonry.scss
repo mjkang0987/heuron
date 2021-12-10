@@ -8,6 +8,16 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(25%, auto));
 
+        > .item {
+            @for $i from 1 through 11 {
+                &:nth-child(#{$i}) {
+                    img {
+                        animation-delay: #{$i * .2}s;
+                    }
+                }
+            }
+        }
+
         &.left {
             .item:first-child {
                 grid-column: 1 / 3;
@@ -47,13 +57,9 @@
         width: 100%;
         padding: 4px;
         box-sizing: border-box;
-        animation: fadeInDown .3s ease-in-out;
-        animation-fill-mode: backwards;
 
-        @for $i from 1 through 11 {
-            &:nth-child(#{$i}) {
-                animation-delay: #{$i * .2}s;
-            }
+        a {
+            display: block;
         }
 
         .img-wrap {
@@ -70,6 +76,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            background-color: rgba(0, 0, 0, .1);
+
+            &.load {
+                animation: fadeInDown .3s ease-in-out;
+                animation-fill-mode: backwards;
+            }
         }
     }
 }

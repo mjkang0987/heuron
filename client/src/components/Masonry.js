@@ -1,23 +1,26 @@
+import {useState} from 'react';
+
 import {Portal} from './Portals';
 import {Layer} from './Layer';
+
+import {MasonryItems} from './MasonryItems';
+
+import {GRID_LENGTH} from '../libs/constants/constants';
 
 import '../styles/masonry.scss';
 
 export const Masonry = ({data}) => {
-    return (<div className="masonry">
-            <div className="items left">
-                {data && data.slice(0, 11).map((item, index) => <div
-                    key={`'item-${index}`}
-                    className="item">
-                    <div className="img-wrap">
-                        <img src={item.download_url}
-                             alt={item.author}/>
-                    </div>
-                </div>)}
-            </div>
+    const [pages, setPages] = useState(1);
+
+    return (<>
+            <MasonryItems
+                items={data.slice(0, (pages * GRID_LENGTH > data.length ? data.length : pages * GRID_LENGTH))}
+                max={data.length}
+                pages={pages}
+                setPages={setPages} />
             <Portal>
-                <Layer img={data && data[0].download_url}/>
+                <Layer img={data[0].download_url}/>
             </Portal>
-        </div>
+        </>
     );
 };
