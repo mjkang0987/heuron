@@ -1,10 +1,10 @@
 import {useRef} from 'react';
 import {Link} from 'react-router-dom';
 
-import {EVENT} from '../libs/constants/constants';
+import {LazyImage} from './LazyImage';
+import {EventDesc} from './EventDesc';
 
 import '../styles/event.scss';
-import {LazyImage} from './LazyImage';
 
 export const Event = ({data}) => {
     const targetRefs = useRef([]);
@@ -19,8 +19,7 @@ export const Event = ({data}) => {
                             ref={el => targetRefs.current[index] = el}
                             source={event.download_url}/>
                     </span>
-                    <strong className="event-title">{EVENT[index].TITLE}</strong>
-                    <p className="event-desc">{EVENT[index].DESC}</p>
+                    <EventDesc index={index}/>
                 </Link>
             </div>)}
         </div>
