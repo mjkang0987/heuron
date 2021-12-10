@@ -11,16 +11,11 @@ export const Header = () => {
     const [fixed, setFixed] = useState({isFixed: false});
     const targetRef = useRef(null);
 
-    const getFixed = ({isFixed}) => {
-        setFixed({
-            ...fixed,
-            isFixed: isFixed
-        });
-    };
-
     const onIntersect = useCallback(
         ([{isIntersecting}]) => {
-            getFixed({isFixed: isIntersecting});
+            setFixed({
+                isFixed: isIntersecting
+            });
         }, [setFixed],
     );
 
