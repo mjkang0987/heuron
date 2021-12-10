@@ -5,8 +5,10 @@ import {getItems} from './libs/api/getItems';
 import {Header} from './components/Header';
 import {Visual} from './components/Visual';
 import {Event} from './components/Event';
+import {Masonry} from './components/Masonry';
 
 import './styles/initStyle.scss';
+import './styles/common.scss';
 
 export const App = () => {
     const [banners, setBanners] = useState(null);
@@ -22,6 +24,7 @@ export const App = () => {
             <Header/>
             <Visual data={banners}/>
             <Event data={banners}/>
+            <Masonry data={banners}/>
         </>
     );
 };
