@@ -8,6 +8,7 @@ import {Event} from './components/Event';
 import {Masonry} from './components/Masonry';
 
 import './styles/initStyle.scss';
+import './styles/common.scss';
 
 export const App = () => {
     const [banners, setBanners] = useState(null);
