@@ -13,7 +13,6 @@ header {
         background-color: #fff;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3);
         transform: translateY(-50px);
-        transition: transform .3s ease-in-out;
     }
 
     &.fixed {
@@ -25,12 +24,16 @@ header {
             background-color: #fff;
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3);
             transform: translateY(0);
+            z-index: 10;
+            transition: transform .3s ease-in-out;
         }
 
         .header-wrap {
             position: fixed;
             top: 0;
             transform: translateX(-50%) translateY(0);
+            z-index: 11;
+            transition: transform .3s ease-in-out;
         }
 
         .link-home,
@@ -50,7 +53,6 @@ header {
     height: 50px;
     left: 50%;
     transform: translateX(-50%) translateY(-50px);
-    transition: transform .3s ease-in-out;
 
     .link-home {
         color: #fff;
