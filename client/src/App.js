@@ -1,27 +1,15 @@
-import {useEffect, useState} from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
-import {getItems} from './libs/api/getItems';
-
-import {Header} from './components/Header';
-import {Visual} from './components/Visual';
-import {Event} from './components/Event';
-
-import './styles/initStyle.scss';
+import {Main} from './routes/Main';
 
 export const App = () => {
-    const [banners, setBanners] = useState(null);
-
-    useEffect(() => {
-        (async () => {
-            const getImg = await getItems({uri: 'https://picsum.photos/v2/list'});
-            setBanners(getImg);
-        })();
-    }, []);
     return (
         <>
-            <Header/>
-            <Visual data={banners}/>
-            <Event data={banners}/>
+            <BrowserRouter>
+                <Routes>
+                    <Route exact path="*" element={<Main/>}/>
+                </Routes>
+            </BrowserRouter>
         </>
     );
 };
