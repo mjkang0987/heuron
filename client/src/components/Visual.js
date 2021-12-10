@@ -13,7 +13,18 @@ export const Visual = ({data}) => {
     }, [thisSwiper, setThisSwiper]);
 
     return (
-        <div className="visual">
+        <div
+            className="visual"
+            onMouseEnter={() => {
+                if (thisSwiper) {
+                    thisSwiper.autoplay.stop();
+                }
+            }}
+            onMouseLeave={() => {
+                if (thisSwiper) {
+                    thisSwiper.autoplay.start();
+                }
+            }}>
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 navigation
