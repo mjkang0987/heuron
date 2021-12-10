@@ -4,8 +4,9 @@ import {Link} from 'react-router-dom';
 import {Swiper, SwiperSlide} from 'swiper/react/swiper-react.js';
 import {Navigation, Pagination, Autoplay} from 'swiper';
 
-import '../styles/visual.scss';
 import {LazyImage} from './LazyImage';
+
+import '../styles/visual.scss';
 
 export const Visual = ({data}) => {
     const [thisSwiper, setThisSwiper] = useState(null);
