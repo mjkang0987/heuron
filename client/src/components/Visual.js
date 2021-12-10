@@ -8,9 +8,7 @@ import '../styles/visual.scss';
 
 export const Visual = ({data}) => {
     const [thisSwiper, setThisSwiper] = useState(null);
-
-    useEffect(_ => {
-    }, [thisSwiper, setThisSwiper]);
+    const targetRefs = useRef([]);
 
     return (
         <div
