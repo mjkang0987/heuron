@@ -4,7 +4,7 @@ import '../styles/event.scss';
 
 export const Event = ({data}) => {
     return (<div className="event">
-            {data && data.slice(10, 13).map((event, index) => <div
+            {data.map((event, index) => <div
                 key={`event-${index}`}
                 className="event-item">
                 <a href="#">

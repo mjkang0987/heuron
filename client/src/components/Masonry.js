@@ -6,7 +6,7 @@ import '../styles/masonry.scss';
 export const Masonry = ({data}) => {
     return (<div className="masonry">
             <div className="items left">
-                {data && data.slice(0, 11).map((item, index) => <div
+                {data.map((item, index) => <div
                     key={`'item-${index}`}
                     className="item">
                     <div className="img-wrap">

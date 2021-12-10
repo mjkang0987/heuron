@@ -16,6 +16,7 @@ export const Visual = ({data}) => {
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 navigation
+                loop
                 pagination={{clickable: true}}
                 autoplay={{delay: 4000}}
                 spaceBetween={50}
@@ -24,7 +25,7 @@ export const Visual = ({data}) => {
                 lazy={true}
                 onSwiper={(swiper) => setThisSwiper(swiper)}
                 className="visual-slides">
-                {data && data.slice(0, 10).map((slide, i) => <SwiperSlide
+                {data.slice(0, 10).map((slide, i) => <SwiperSlide
                     key={`slide-${i}`}
                     className="slide">
                     <a href={slide.LINK}>

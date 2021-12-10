@@ -11,20 +11,24 @@ import './styles/initStyle.scss';
 import './styles/common.scss';
 
 export const App = () => {
-    const [banners, setBanners] = useState(null);
+    const [visuals, setVisuals] = useState(null);
+    const [eventBanners, setEventBanners] = useState(null);
+    const [gridBanners, setGridBanners] = useState(null);
 
     useEffect(() => {
         (async () => {
-            const getImg = await getItems({uri: 'https://picsum.photos/v2/list'});
-            setBanners(getImg);
+            const getAllImg = await getItems({uri: 'https://picsum.photos/v2/list'});
+            await setVisuals(getAllImg.slice(0, 10));
+            await setEventBanners(getAllImg.slice(10, 13));
+            await setGridBanners(getAllImg.slice(0, 11));
         })();
-    }, []);
+    }, [setVisuals, setEventBanners, setGridBanners]);
     return (
         <>
             <Header/>
-            <Visual data={banners}/>
-            <Event data={banners}/>
-            <Masonry data={banners}/>
+            {visuals && <Visual data={visuals}/>}
+            {eventBanners && <Event data={eventBanners}/>}
+            {gridBanners && <Masonry data={gridBanners}/>}
         </>
     );
 };
