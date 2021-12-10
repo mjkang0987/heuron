@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+
 import {EVENT} from '../libs/constants/constants';
 
 import '../styles/event.scss';
@@ -7,7 +9,7 @@ export const Event = ({data}) => {
             {data.map((event, index) => <div
                 key={`event-${index}`}
                 className="event-item">
-                <a href="#">
+                <Link to="#">
                     <span className="img-wrap">
                         <img
                             src={event.download_url}
@@ -15,7 +17,7 @@ export const Event = ({data}) => {
                     </span>
                     <strong className="event-title">{EVENT[index].TITLE}</strong>
                     <p className="event-desc">{EVENT[index].DESC}</p>
-                </a>
+                </Link>
             </div>)}
         </div>
     );

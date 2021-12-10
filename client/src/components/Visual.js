@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
 
 import {Swiper, SwiperSlide} from 'swiper/react/swiper-react.js';
 import {Navigation, Pagination, Autoplay} from 'swiper';
@@ -28,12 +29,12 @@ export const Visual = ({data}) => {
                 {data.slice(0, 10).map((slide, i) => <SwiperSlide
                     key={`slide-${i}`}
                     className="slide">
-                    <a href={slide.LINK}>
+                    <Link to="#">
                         <strong className="slide-title">{slide.author}</strong>
                         <img
                             src={slide.download_url}
                             alt=""/>
-                    </a>
+                    </Link>
                     <div className="visual-title">SLIDE DESCRIPTION</div>
                 </SwiperSlide>)}
             </Swiper>

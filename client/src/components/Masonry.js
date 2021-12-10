@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+
 import {Portal} from './Portals';
 import {Layer} from './Layer';
 
@@ -10,8 +12,10 @@ export const Masonry = ({data}) => {
                     key={`'item-${index}`}
                     className="item">
                     <div className="img-wrap">
-                        <img src={item.download_url}
-                             alt={item.author}/>
+                        <Link to="#">
+                            <img src={item.download_url}
+                                 alt={item.author}/>
+                        </Link>
                     </div>
                 </div>)}
             </div>
