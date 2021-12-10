@@ -25,7 +25,7 @@ export const Main = () => {
             const getAllImg = await getItems({uri: 'https://picsum.photos/v2/list'});
             await setVisuals(getAllImg.slice(0, 10));
             await setEventBanners(getAllImg.slice(10, 13));
-            await setGridBanners(getAllImg.slice(0, 11));
+            await setGridBanners(getAllImg);
         })();
     }, [setVisuals, setEventBanners, setGridBanners]);
 
