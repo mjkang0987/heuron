@@ -1,10 +1,11 @@
 import {useCallback, useRef} from 'react';
 import {Link} from 'react-router-dom';
 
+import {useIntersection} from '../hooks/useIntersection';
+
 import {LazyImage} from './LazyImage';
 
 import {GRID_LENGTH} from '../libs/constants/constants';
-import {useIntersection} from '../hooks/useIntersection';
 
 export const MasonryItems = ({items, max, pages, setPages}) => {
     const targetRefs = useRef([]);
