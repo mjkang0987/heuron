@@ -24,7 +24,7 @@ export const LazyImage = forwardRef(({source}, ref) => {
             {!load && <Loading type="inline"/>}
             <img
                 ref={setTarget}
-                src={visible || load ?  source : ''}
+                src={visible || load ? source : ''}
                 onLoad={() => setLoad(true)}
                 className={load ? 'load' : ''}
                 alt=""/>
