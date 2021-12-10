@@ -11,7 +11,7 @@ export const LazyImage = forwardRef(({source}, ref) => {
             if (!visible) {
                 setVisible(isIntersecting);
             }
-        }, [setVisible],
+        }, [visible, setVisible],
     );
 
     const {setTarget} = useIntersection({
