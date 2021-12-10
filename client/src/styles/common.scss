@@ -64,4 +64,50 @@
     }
 }
 
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+
+    .icon-loading {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -50px 0 0 -50px;
+        width: 100px;
+        height: 100px;
+        box-sizing: border-box;
+        border-radius: 100%;
+        border-width: 2px;
+        border-style: solid;
+        border-color: transparent #000;
+        animation: rotateLoading 1.5s ease-in-out infinite normal;
+        transform-origin: 50% 50%;
+        cursor: progress;
+
+        &:hover {
+            border-color: transparent #e45635;
+
+            + .loading-text {
+                color: #e45635;
+            }
+        }
+    }
+
+    &-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        animation: loadingText 2s linear infinite;
+        font-size: 10px;
+        font-weight: bold;
+        pointer-events: none;
+    }
+}
+
 @import "animation";
