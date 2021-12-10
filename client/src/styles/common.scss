@@ -1,5 +1,14 @@
 @import "mixin";
 
+img {
+    opacity: 0;
+
+    &.load {
+        opacity: 1;
+        transition: opacity .3s;
+    }
+}
+
 .layer {
     display: none;
     position: fixed;

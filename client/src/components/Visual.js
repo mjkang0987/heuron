@@ -1,10 +1,11 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {Link} from 'react-router-dom';
 
 import {Swiper, SwiperSlide} from 'swiper/react/swiper-react.js';
 import {Navigation, Pagination, Autoplay} from 'swiper';
 
 import '../styles/visual.scss';
+import {LazyImage} from './LazyImage';
 
 export const Visual = ({data}) => {
     const [thisSwiper, setThisSwiper] = useState(null);
@@ -35,14 +36,14 @@ export const Visual = ({data}) => {
                 lazy={true}
                 onSwiper={(swiper) => setThisSwiper(swiper)}
                 className="visual-slides">
-                {data.slice(0, 10).map((slide, i) => <SwiperSlide
+                {data.map((slide, i) => <SwiperSlide
                     key={`slide-${i}`}
                     className="slide">
                     <Link to="#">
                         <strong className="slide-title">{slide.author}</strong>
-                        <img
-                            src={slide.download_url}
-                            alt=""/>
+                        <LazyImage
+                            ref={el => targetRefs.current[i] = el}
+                            source={slide.download_url}/>
                     </Link>
                     <div className="visual-title">SLIDE DESCRIPTION</div>
                 </SwiperSlide>)}
