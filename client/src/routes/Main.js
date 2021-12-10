@@ -32,7 +32,7 @@ export const Main = () => {
     return (
         <>
             {loading
-                ? <Loading type='full'/>
+                ? <Loading type="full"/>
                 : <>
                     <Header/>
                     {visuals && <Visual data={visuals}/>}
