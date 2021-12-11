@@ -1,4 +1,4 @@
-import {useCallback, useRef, useState} from 'react';
+import {useRef, useState} from 'react';
 import {Link} from 'react-router-dom';
 
 import {useIntersection} from '../hooks/useIntersection';

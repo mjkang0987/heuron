@@ -1,4 +1,4 @@
-import {forwardRef, useCallback, useState} from 'react';
+import {forwardRef, useState} from 'react';
 import {useIntersection} from '../hooks/useIntersection';
 import {Loading} from './Loading';
 
