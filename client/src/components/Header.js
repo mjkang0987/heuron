@@ -8,16 +8,12 @@ import {NAV} from '../libs/constants/constants';
 import '../styles/header.scss';
 
 export const Header = () => {
-    const [fixed, setFixed] = useState({isFixed: false});
+    const [fixed, setFixed] = useState(false);
     const targetRef = useRef(null);
 
-    const onIntersect = useCallback(
-        ([{isIntersecting}]) => {
-            setFixed({
-                isFixed: isIntersecting
-            });
-        }, [setFixed],
-    );
+    const onIntersect = ([{isIntersecting}]) => {
+        setFixed(isIntersecting);
+    };
 
     const {setTarget} = useIntersection({
         target   : targetRef.current,
@@ -28,7 +24,7 @@ export const Header = () => {
     return (
         <header
             ref={setTarget}
-            className={!fixed.isFixed ? 'fixed' : ''}>
+            className={!fixed ? 'fixed' : ''}>
             <div className="header-wrap">
                 <span className="logo">
                     <Link

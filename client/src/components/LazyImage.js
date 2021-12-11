@@ -6,13 +6,11 @@ export const LazyImage = forwardRef(({source}, ref) => {
     const [visible, setVisible] = useState(false);
     const [load, setLoad] = useState(false);
 
-    const onIntersect = useCallback(
-        ([{isIntersecting}]) => {
-            if (!visible) {
-                setVisible(isIntersecting);
-            }
-        }, [visible, setVisible],
-    );
+    const onIntersect = ([{isIntersecting}]) => {
+        if (!visible) {
+            setVisible(isIntersecting);
+        }
+    };
 
     const {setTarget} = useIntersection({
         target   : ref,

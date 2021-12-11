@@ -11,17 +11,15 @@ export const MasonryItems = ({items, max, pages, setPages}) => {
     const targetRefs = useRef([]);
     const targetRef = useRef(null);
 
-    const onIntersect = useCallback(
-        ([{isIntersecting}]) => {
-            if (max === items.length) {
-                return;
-            }
+    const onIntersect = ([{isIntersecting}]) => {
+        if (max === items.length) {
+            return;
+        }
 
-            if (isIntersecting) {
-                setPages(pages + 1);
-            }
-        }, [pages, setPages, max, items.length],
-    );
+        if (isIntersecting) {
+            setPages(pages + 1);
+        }
+    };
 
     const {setTarget} = useIntersection({
         target   : targetRef.current,
