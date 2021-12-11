@@ -29,7 +29,7 @@ export const App = () => {
             await setEventBanners(getAllImg.slice(10, 13));
             await setGridBanners(getAllImg);
         })();
-    }, [setVisuals, setEventBanners, setGridBanners]);
+    }, []);
     return (
         <>
             {loading
