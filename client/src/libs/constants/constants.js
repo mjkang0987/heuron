@@ -31,3 +31,5 @@ export const EVENT = [
         DESC : 'Donec ultricies orci velit, eu dictum justo imperdiet sed. Curabitur lacinia ipsum iaculis nibh molestie congue. Sed nec eros iaculis, accumsan quam egestas, vulputate ex. Nam a tincidunt eros. '
     }
 ];
+
+export const GRID_LENGTH = 11;
