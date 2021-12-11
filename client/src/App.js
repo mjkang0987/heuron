@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 
 import {getData} from './libs/api/getData';
+import {delay} from './libs/utils/delay';
 
 import {API} from './libs/constants/constants';
 
@@ -20,11 +21,10 @@ export const App = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        setTimeout(() => {
-            setLoading(false);
-        }, 3000);
         (async () => {
             const getAllImg = await getData({uri: API});
+            await delay(3000);
+            setLoading(false);
             await setVisuals(getAllImg.slice(0, 10));
             await setEventBanners(getAllImg.slice(10, 13));
             await setGridBanners(getAllImg);
