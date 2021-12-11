@@ -32,14 +32,13 @@ export const App = () => {
     }, []);
     return (
         <>
-            {loading
-                ? <Loading type="full"/>
-                : <>
-                    <Header/>
-                    {visuals && <Visual data={visuals}/>}
-                    {eventBanners && <Event data={eventBanners}/>}
-                    {gridBanners && <Masonry data={gridBanners}/>}
-                </>}
+            {loading && <Loading type="full"/>}
+            {!loading && <>
+                <Header/>
+                {visuals && <Visual data={visuals}/>}
+                {eventBanners && <Event data={eventBanners}/>}
+                {gridBanners && <Masonry data={gridBanners}/>}
+            </>}
         </>
     );
 };
