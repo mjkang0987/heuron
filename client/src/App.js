@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 
-import {getItems} from './libs/api/getItems';
+import {getData} from './libs/api/getData';
 
 import {Loading} from './components/Loading';
 import {Header} from './components/Header';
@@ -22,7 +22,7 @@ export const App = () => {
             setLoading(false);
         }, 3000);
         (async () => {
-            const getAllImg = await getItems({uri: 'https://picsum.photos/v2/list'});
+            const getAllImg = await getData({uri: 'https://picsum.photos/v2/list'});
             await setVisuals(getAllImg.slice(0, 10));
             await setEventBanners(getAllImg.slice(10, 13));
             await setGridBanners(getAllImg);
