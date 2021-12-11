@@ -1,5 +1,4 @@
-import {useCallback, useRef, useState} from 'react';
-import {Link} from 'react-router-dom';
+import {useRef, useState} from 'react';
 
 import {useIntersection} from '../hooks/useIntersection';
 
@@ -8,16 +7,12 @@ import {NAV} from '../libs/constants/constants';
 import '../styles/header.scss';
 
 export const Header = () => {
-    const [fixed, setFixed] = useState({isFixed: false});
+    const [fixed, setFixed] = useState(false);
     const targetRef = useRef(null);
 
-    const onIntersect = useCallback(
-        ([{isIntersecting}]) => {
-            setFixed({
-                isFixed: isIntersecting
-            });
-        }, [setFixed],
-    );
+    const onIntersect = ([{isIntersecting}]) => {
+        setFixed(isIntersecting);
+    };
 
     const {setTarget} = useIntersection({
         target   : targetRef.current,
@@ -28,19 +23,19 @@ export const Header = () => {
     return (
         <header
             ref={setTarget}
-            className={!fixed.isFixed ? 'fixed' : ''}>
+            className={!fixed ? 'fixed' : ''}>
             <div className="header-wrap">
                 <span className="logo">
-                    <Link
-                        to="#"
-                        className="link-home">로고</Link>
+                    <a
+                        href="/#"
+                        className="link-home">로고</a>
                 </span>
                 <nav className="nav">
                     <ul>
-                        {NAV.map((nav, index) => <li key={`nav-${index}`}>
-                            <Link
-                                to={nav.LINK}
-                                className="nav-item">{nav.NAME}</Link>
+                        {NAV.map((nav) => <li key={`nav-${nav.ID}`}>
+                            <a
+                                href={nav.LINK}
+                                className="nav-item">{nav.NAME}</a>
                         </li>)}
                     </ul>
                 </nav>

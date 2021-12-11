@@ -1,5 +1,4 @@
 import {useRef, useState} from 'react';
-import {Link} from 'react-router-dom';
 
 import {Swiper, SwiperSlide} from 'swiper/react/swiper-react.js';
 import {Navigation, Pagination, Autoplay} from 'swiper';
@@ -12,18 +11,20 @@ export const Visual = ({data}) => {
     const [thisSwiper, setThisSwiper] = useState(null);
     const targetRefs = useRef([]);
 
+    const togglePlay = ({type}) => {
+        if (thisSwiper) {
+            thisSwiper.autoplay[type]();
+        }
+    }
+
     return (
         <div
             className="visual"
             onMouseEnter={() => {
-                if (thisSwiper) {
-                    thisSwiper.autoplay.stop();
-                }
+                togglePlay({type: 'stop'});
             }}
             onMouseLeave={() => {
-                if (thisSwiper) {
-                    thisSwiper.autoplay.start();
-                }
+                togglePlay({type: 'start'});
             }}>
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
@@ -38,14 +39,14 @@ export const Visual = ({data}) => {
                 onSwiper={(swiper) => setThisSwiper(swiper)}
                 className="visual-slides">
                 {data.map((slide, i) => <SwiperSlide
-                    key={`slide-${i}`}
+                    key={`slide-${slide.id}`}
                     className="slide">
-                    <Link to="#">
+                    <a href="/#">
                         <strong className="slide-title">{slide.author}</strong>
                         <LazyImage
                             ref={el => targetRefs.current[i] = el}
                             source={slide.download_url}/>
-                    </Link>
+                    </a>
                     <div className="visual-title">SLIDE DESCRIPTION</div>
                 </SwiperSlide>)}
             </Swiper>

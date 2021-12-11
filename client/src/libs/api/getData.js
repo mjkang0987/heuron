@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getItems = async ({uri}) => {
+export const getData = async ({uri}) => {
     try {
         const {data} = await axios(uri);
         return data;
