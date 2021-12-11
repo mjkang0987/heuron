@@ -11,18 +11,20 @@ export const Visual = ({data}) => {
     const [thisSwiper, setThisSwiper] = useState(null);
     const targetRefs = useRef([]);
 
+    const togglePlay = ({type}) => {
+        if (thisSwiper) {
+            thisSwiper.autoplay[type]();
+        }
+    }
+
     return (
         <div
             className="visual"
             onMouseEnter={() => {
-                if (thisSwiper) {
-                    thisSwiper.autoplay.stop();
-                }
+                togglePlay({type: 'stop'});
             }}
             onMouseLeave={() => {
-                if (thisSwiper) {
-                    thisSwiper.autoplay.start();
-                }
+                togglePlay({type: 'start'});
             }}>
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
