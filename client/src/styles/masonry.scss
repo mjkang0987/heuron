@@ -5,12 +5,24 @@
     margin: 100px auto;
     @include mobile {
         width: 100%;
+        margin-bottom: 20px;
     }
 
     .items {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(25%, auto));
         padding: 0 16px;
+        @include mobile {
+            .icon-loading {
+                width: 20px;
+                height: 20px;
+                margin: -10px 0 0 -10px;
+            }
+
+            .loading-text {
+                display: none;
+            }
+        }
 
         > .item {
             @for $i from 1 through 11 {
