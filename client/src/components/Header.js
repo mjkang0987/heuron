@@ -1,5 +1,4 @@
 import {useRef, useState} from 'react';
-import {Link} from 'react-router-dom';
 
 import {useIntersection} from '../hooks/useIntersection';
 
@@ -27,16 +26,16 @@ export const Header = () => {
             className={!fixed ? 'fixed' : ''}>
             <div className="header-wrap">
                 <span className="logo">
-                    <Link
-                        to="#"
-                        className="link-home">로고</Link>
+                    <a
+                        href="/#"
+                        className="link-home">로고</a>
                 </span>
                 <nav className="nav">
                     <ul>
                         {NAV.map((nav, index) => <li key={`nav-${index}`}>
-                            <Link
-                                to={nav.LINK}
-                                className="nav-item">{nav.NAME}</Link>
+                            <a
+                                href={nav.LINK}
+                                className="nav-item">{nav.NAME}</a>
                         </li>)}
                     </ul>
                 </nav>

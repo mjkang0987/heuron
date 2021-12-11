@@ -1,5 +1,4 @@
 import {useRef, useState} from 'react';
-import {Link} from 'react-router-dom';
 
 import {Swiper, SwiperSlide} from 'swiper/react/swiper-react.js';
 import {Navigation, Pagination, Autoplay} from 'swiper';
@@ -40,12 +39,12 @@ export const Visual = ({data}) => {
                 {data.map((slide, i) => <SwiperSlide
                     key={`slide-${i}`}
                     className="slide">
-                    <Link to="#">
+                    <a href="/#">
                         <strong className="slide-title">{slide.author}</strong>
                         <LazyImage
                             ref={el => targetRefs.current[i] = el}
                             source={slide.download_url}/>
-                    </Link>
+                    </a>
                     <div className="visual-title">SLIDE DESCRIPTION</div>
                 </SwiperSlide>)}
             </Swiper>

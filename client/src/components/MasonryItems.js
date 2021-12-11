@@ -1,5 +1,4 @@
 import {useRef} from 'react';
-import {Link} from 'react-router-dom';
 
 import {useIntersection} from '../hooks/useIntersection';
 
@@ -35,11 +34,11 @@ export const MasonryItems = ({items, max, pages, setPages}) => {
                     key={`'item-${index}`}
                     className="item">
                     <div className="img-wrap">
-                        <Link to="#">
+                        <a href="/#">
                             <LazyImage
                                 ref={el => targetRefs.current[index] = el}
                                 source={item.download_url}/>
-                        </Link>
+                        </a>
                     </div>
                 </div>)}
             </div>)}
