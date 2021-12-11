@@ -58,8 +58,12 @@
         padding: 4px;
         box-sizing: border-box;
 
-        a {
-            display: block;
+
+        button {
+            appearance: none;
+            border: none;
+            background: none;
+            cursor: pointer;
         }
 
         .img-wrap {

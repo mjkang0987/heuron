@@ -1,14 +1,38 @@
-import {useRef} from 'react';
+import {useRef, useState} from 'react';
 
 import {useIntersection} from '../hooks/useIntersection';
 
+import {GRID_LENGTH} from '../libs/constants/constants';
+
 import {LazyImage} from './LazyImage';
 
-import {GRID_LENGTH} from '../libs/constants/constants';
+import {Portal} from './Portals';
+import {Layer} from './Layer';
 
 export const MasonryItems = ({items, max, pages, setPages}) => {
     const targetRefs = useRef([]);
     const targetRef = useRef(null);
+
+    const [open, setOpen] = useState(false);
+    const [animate, setAnimate] = useState(false);
+    const [img, setImg] = useState(null);
+
+    const onOpen = ({source}) => {
+        setOpen(true);
+        setImg(source);
+    };
+
+    const onAnimate = () => {
+        setAnimate(true);
+    };
+
+    const onClose = () => {
+        if (animate) {
+            setOpen(false);
+            setAnimate(false);
+            setImg(null);
+        }
+    };
 
     const onIntersect = ([{isIntersecting}]) => {
         if (max === items.length) {
@@ -34,17 +58,28 @@ export const MasonryItems = ({items, max, pages, setPages}) => {
                     key={`'item-${item.id}`}
                     className="item">
                     <div className="img-wrap">
-                        <a href="/#">
+                        <button
+                            type="button"
+                            onClick={() => onOpen({source: item.download_url})}>
                             <LazyImage
                                 ref={el => targetRefs.current[index] = el}
                                 source={item.download_url}/>
-                        </a>
+                        </button>
                     </div>
                 </div>)}
             </div>)}
             <div
                 ref={setTarget}
                 className="masonry-point"/>
+            {open && <Portal>
+                <Layer
+                    isOpen={open}
+                    isAnimate={animate}
+                    setOpen={setOpen}
+                    onAnimate={onAnimate}
+                    onClose={onClose}
+                    img={img}/>
+            </Portal>}
         </div>
     );
 };
