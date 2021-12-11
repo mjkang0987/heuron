@@ -1,5 +1,4 @@
 import {useRef} from 'react';
-import {Link} from 'react-router-dom';
 
 import {LazyImage} from './LazyImage';
 import {EventDesc} from './EventDesc';
@@ -11,16 +10,16 @@ export const Event = ({data}) => {
 
     return (<div className="event">
             {data.map((event, index) => <div
-                key={`event-${index}`}
+                key={`event-${event.id}`}
                 className="event-item">
-                <Link to="#">
+                <a href="/#">
                     <span className="img-wrap">
                         <LazyImage
                             ref={el => targetRefs.current[index] = el}
                             source={event.download_url}/>
                     </span>
                     <EventDesc index={index}/>
-                </Link>
+                </a>
             </div>)}
         </div>
     );

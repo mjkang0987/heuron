@@ -1,5 +1,4 @@
-import {useCallback, useRef} from 'react';
-import {Link} from 'react-router-dom';
+import {useRef} from 'react';
 
 import {useIntersection} from '../hooks/useIntersection';
 
@@ -11,17 +10,15 @@ export const MasonryItems = ({items, max, pages, setPages}) => {
     const targetRefs = useRef([]);
     const targetRef = useRef(null);
 
-    const onIntersect = useCallback(
-        ([{isIntersecting}]) => {
-            if (max === items.length) {
-                return;
-            }
+    const onIntersect = ([{isIntersecting}]) => {
+        if (max === items.length) {
+            return;
+        }
 
-            if (isIntersecting) {
-                setPages(pages + 1);
-            }
-        }, [pages, setPages, max, items.length],
-    );
+        if (isIntersecting) {
+            setPages(pages + 1);
+        }
+    };
 
     const {setTarget} = useIntersection({
         target   : targetRef.current,
@@ -34,14 +31,14 @@ export const MasonryItems = ({items, max, pages, setPages}) => {
                 key={`page-${index}`}
                 className={`items ${index % 2 === 0 ? 'left' : 'right'}`}>
                 {items.slice(index * GRID_LENGTH, (index + 1) * GRID_LENGTH).map((item, index) => <div
-                    key={`'item-${index}`}
+                    key={`'item-${item.id}`}
                     className="item">
                     <div className="img-wrap">
-                        <Link to="#">
+                        <a href="/#">
                             <LazyImage
                                 ref={el => targetRefs.current[index] = el}
                                 source={item.download_url}/>
-                        </Link>
+                        </a>
                     </div>
                 </div>)}
             </div>)}

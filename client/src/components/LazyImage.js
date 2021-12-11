@@ -1,4 +1,4 @@
-import {forwardRef, useCallback, useState} from 'react';
+import {forwardRef, useState} from 'react';
 import {useIntersection} from '../hooks/useIntersection';
 import {Loading} from './Loading';
 
@@ -6,13 +6,11 @@ export const LazyImage = forwardRef(({source}, ref) => {
     const [visible, setVisible] = useState(false);
     const [load, setLoad] = useState(false);
 
-    const onIntersect = useCallback(
-        ([{isIntersecting}]) => {
-            if (!visible) {
-                setVisible(isIntersecting);
-            }
-        }, [visible, setVisible],
-    );
+    const onIntersect = ([{isIntersecting}]) => {
+        if (!visible) {
+            setVisible(isIntersecting);
+        }
+    };
 
     const {setTarget} = useIntersection({
         target   : ref,
