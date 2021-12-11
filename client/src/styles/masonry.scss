@@ -3,10 +3,14 @@
 .masonry {
     width: 980px;
     margin: 100px auto;
+    @include mobile {
+        width: 100%;
+    }
 
     .items {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(25%, auto));
+        padding: 0 16px;
 
         > .item {
             @for $i from 1 through 11 {
