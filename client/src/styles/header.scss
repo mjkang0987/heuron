@@ -13,7 +13,6 @@ header {
         background-color: #fff;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3);
         transform: translateY(-50px);
-        transition: transform .3s ease-in-out;
     }
 
     &.fixed {
@@ -25,16 +24,21 @@ header {
             background-color: #fff;
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3);
             transform: translateY(0);
+            z-index: 10;
+            transition: transform .3s ease-in-out;
         }
 
         .header-wrap {
             position: fixed;
             top: 0;
             transform: translateX(-50%) translateY(0);
+            z-index: 11;
+            transition: transform .3s ease-in-out;
         }
 
         .link-home,
-        .nav-item {
+        .nav-item,
+        .btn-nav {
             color: #000;
         }
     }
@@ -50,28 +54,64 @@ header {
     height: 50px;
     left: 50%;
     transform: translateX(-50%) translateY(-50px);
-    transition: transform .3s ease-in-out;
+    z-index: 10;
+    @include mobile {
+        width: 100%;
+
+        .link-home {
+            padding: 0 20px;
+        }
+    }
 
     .link-home {
         color: #fff;
         font-size: 16px;
+    }
+
+    .btn-nav {
+        font-size: 16px;
+        color: #fff;
+        border: none;
+        background-color: transparent;
+        font-weight: bold;
+        padding: 0 20px;
     }
 }
 
 .nav {
     ul {
         display: flex;
+        @include mobile {
+            display: none;
+            flex-direction: column;
+            position: fixed;
+            top: 50px;
+            right: 0;
+            width: 200px;
+            background-color: #fff;
+            box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .3);
+
+            &.on {
+                display: flex;
+            }
+        }
     }
 
     li {
         flex: 1;
         padding: 0 20px;
+        @include mobile {
+            padding: 20px;
+        }
     }
 
     &-item {
         position: relative;
         color: #fff;
         font-size: 16px;
+        @include mobile {
+            color: #000;
+        }
 
         &:before {
             content: "";

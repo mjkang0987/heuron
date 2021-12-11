@@ -1,4 +1,4 @@
-$mobile: 425;
+$mobile: 768;
 
 @mixin a11y {
     position: absolute;
@@ -29,5 +29,3 @@ $mobile: 425;
 @function vw($val) {
     @return math.div($val, $mobile) * 100vw;
 }
-
-@import "animation";

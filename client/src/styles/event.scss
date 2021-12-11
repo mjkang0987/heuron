@@ -4,12 +4,21 @@
     display: flex;
     width: 980px;
     margin: 50px auto 0;
+    @include mobile {
+        width: 100%;
+        flex-direction: column;
+        margin: 0 auto;
+    }
 
     &-item {
         flex: 1;
         padding: 0 8px;
         animation: fadeInLeft .5s ease-in-out;
         animation-fill-mode: backwards;
+        @include mobile {
+            padding: 0 20px;
+            margin-top: 50px;
+        }
 
         @for $i from 1 through 3 {
             &:nth-child(#{$i}) {
