@@ -31,7 +31,7 @@ export const MasonryItems = ({items, max, pages, setPages}) => {
                 key={`page-${index}`}
                 className={`items ${index % 2 === 0 ? 'left' : 'right'}`}>
                 {items.slice(index * GRID_LENGTH, (index + 1) * GRID_LENGTH).map((item, index) => <div
-                    key={`'item-${index}`}
+                    key={`'item-${item.id}`}
                     className="item">
                     <div className="img-wrap">
                         <a href="/#">

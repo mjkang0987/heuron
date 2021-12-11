@@ -37,7 +37,7 @@ export const Visual = ({data}) => {
                 onSwiper={(swiper) => setThisSwiper(swiper)}
                 className="visual-slides">
                 {data.map((slide, i) => <SwiperSlide
-                    key={`slide-${i}`}
+                    key={`slide-${slide.id}`}
                     className="slide">
                     <a href="/#">
                         <strong className="slide-title">{slide.author}</strong>

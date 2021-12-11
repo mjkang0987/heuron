@@ -32,7 +32,7 @@ export const Header = () => {
                 </span>
                 <nav className="nav">
                     <ul>
-                        {NAV.map((nav, index) => <li key={`nav-${index}`}>
+                        {NAV.map((nav) => <li key={`nav-${nav.ID}`}>
                             <a
                                 href={nav.LINK}
                                 className="nav-item">{nav.NAME}</a>
