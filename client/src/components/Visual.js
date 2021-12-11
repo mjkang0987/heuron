@@ -2,6 +2,7 @@ import {useRef, useState} from 'react';
 
 import {Swiper, SwiperSlide} from 'swiper/react/swiper-react.js';
 import {Navigation, Pagination, Autoplay} from 'swiper';
+import {useMediaQuery} from 'react-responsive';
 
 import {LazyImage} from './LazyImage';
 
@@ -11,11 +12,15 @@ export const Visual = ({data}) => {
     const [thisSwiper, setThisSwiper] = useState(null);
     const targetRefs = useRef([]);
 
+    const isMobile = useMediaQuery({
+        query : "(max-width:768px)"
+    });
+
     const togglePlay = ({type}) => {
         if (thisSwiper) {
             thisSwiper.autoplay[type]();
         }
-    }
+    };
 
     return (
         <div
@@ -33,7 +38,7 @@ export const Visual = ({data}) => {
                 pagination={{clickable: true}}
                 autoplay={{delay: 4000}}
                 spaceBetween={50}
-                slidesPerView={3}
+                slidesPerView={isMobile ? 1 : 3}
                 centeredSlides={true}
                 lazy={true}
                 onSwiper={(swiper) => setThisSwiper(swiper)}
