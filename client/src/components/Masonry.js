@@ -1,11 +1,12 @@
 import {useRef, useState} from 'react';
 
+import {useIntersection} from '../hooks/useIntersection';
+
 import {MasonryItems} from './MasonryItems';
 
 import {GRID_LENGTH} from '../libs/constants/constants';
 
 import '../styles/masonry.scss';
-import {useIntersection} from '../hooks/useIntersection';
 
 export const Masonry = ({data}) => {
     const [pages, setPages] = useState(1);

@@ -2,9 +2,10 @@ import {useRef, useState} from 'react';
 
 import {useDrag, useDrop} from 'react-dnd';
 
+import {useIntersection} from '../hooks/useIntersection';
+
 import {EventDesc} from './EventDesc';
 import {LazyImage} from './LazyImage';
-import {useIntersection} from '../hooks/useIntersection';
 
 export const EventItem = ({id, index, source, findItem, moveItem}) => {
     const [visible, setVisible] = useState(false);
