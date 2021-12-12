@@ -28,9 +28,9 @@ export const App = () => {
             const getAllImg = await getData({uri: API});
             await delay(3000);
             setLoading(false);
-            await setVisuals(getAllImg.slice(0, 10));
-            await setEventBanners(getAllImg.slice(10, 13));
-            await setGridBanners(getAllImg);
+            setVisuals(getAllImg.slice(0, 10));
+            setEventBanners(getAllImg.slice(10, 13));
+            setGridBanners(getAllImg);
         })();
     }, []);
     return (

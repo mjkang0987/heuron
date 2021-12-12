@@ -13,16 +13,22 @@
     &-item {
         flex: 1;
         padding: 0 8px;
-        animation: fadeInLeft .5s ease-in-out;
-        animation-fill-mode: backwards;
         @include mobile {
             padding: 0 20px;
             margin-top: 50px;
         }
 
-        @for $i from 1 through 3 {
-            &:nth-child(#{$i}) {
-                animation-delay: #{$i * .3}s;
+        &.load {
+            animation: fadeInLeft .5s ease-in-out;
+            animation-fill-mode: backwards;
+
+            @for $i from 1 through 3 {
+                &:nth-child(#{$i}) {
+                    animation-delay: #{$i * .3}s;
+                    @include mobile {
+                        animation-delay: 0s;
+                    }
+                }
             }
         }
 
