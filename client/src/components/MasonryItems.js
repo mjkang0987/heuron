@@ -24,11 +24,13 @@ export const MasonryItems = ({items, index}) => {
     };
 
     const onClose = () => {
-        if (animate) {
-            setOpen(false);
-            setAnimate(false);
-            setImg(null);
+        if (!animate) {
+            return;
         }
+
+        setOpen(false);
+        setAnimate(false);
+        setImg(null);
     };
 
     return (<div
