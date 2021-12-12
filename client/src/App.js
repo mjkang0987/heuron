@@ -1,5 +1,8 @@
 import {useEffect, useState} from 'react';
 
+import {HTML5Backend} from 'react-dnd-html5-backend';
+import {DndProvider} from 'react-dnd';
+
 import {getData} from './libs/api/getData';
 import {delay} from './libs/utils/delay';
 
@@ -36,7 +39,11 @@ export const App = () => {
             {!loading && <>
                 <Header/>
                 {visuals && <Visual data={visuals}/>}
-                {eventBanners && <Event data={eventBanners}/>}
+                {eventBanners && <DndProvider
+                    debugMode={true}
+                    backend={HTML5Backend}>
+                    <Event data={eventBanners}/>
+                </DndProvider>}
                 {gridBanners && <Masonry data={gridBanners}/>}
             </>}
         </>
