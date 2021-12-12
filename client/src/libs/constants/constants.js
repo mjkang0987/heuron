@@ -2,22 +2,22 @@ export const API = 'https://picsum.photos/v2/list';
 
 export const NAV = [
     {
-        ID: 0,
+        ID  : 0,
         NAME: 'MENU',
         LINK: '#'
     },
     {
-        ID: 1,
+        ID  : 1,
         NAME: 'MENU',
         LINK: '#'
     },
     {
-        ID: 2,
+        ID  : 2,
         NAME: 'MENU',
         LINK: '#'
     },
     {
-        ID: 3,
+        ID  : 3,
         NAME: 'MENU',
         LINK: '#'
     }
