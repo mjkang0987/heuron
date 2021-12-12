@@ -9,6 +9,10 @@ img {
     }
 }
 
+.spa {
+    animation: fadeIn .3s ease-in-out;
+}
+
 .layer {
     display: none;
     position: fixed;

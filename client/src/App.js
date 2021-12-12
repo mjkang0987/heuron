@@ -41,7 +41,7 @@ export const App = () => {
     return (
         <>
             {loading && <Loading type="full"/>}
-            {!loading && <>
+            {!loading && <div className="spa">
                 <Header/>
                 {visuals && <Visual data={visuals}/>}
                 {eventBanners && <DndProvider
@@ -50,7 +50,7 @@ export const App = () => {
                     <Event data={eventBanners}/>
                 </DndProvider>}
                 {gridBanners && <Masonry data={gridBanners}/>}
-            </>}
+            </div>}
         </>
     );
 };
