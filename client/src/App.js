@@ -27,6 +27,11 @@ export const App = () => {
         (async () => {
             const getAllImg = await getData({uri: API});
             await delay(3000);
+
+            if (!getAllImg) {
+                return console.error(`데이터를 불러올 수 없습니다.`);
+            }
+
             setLoading(false);
             setVisuals(getAllImg.slice(0, 10));
             setEventBanners(getAllImg.slice(10, 13));
@@ -36,7 +41,7 @@ export const App = () => {
     return (
         <>
             {loading && <Loading type="full"/>}
-            {!loading && <>
+            {!loading && <div className="spa">
                 <Header/>
                 {visuals && <Visual data={visuals}/>}
                 {eventBanners && <DndProvider
@@ -45,7 +50,7 @@ export const App = () => {
                     <Event data={eventBanners}/>
                 </DndProvider>}
                 {gridBanners && <Masonry data={gridBanners}/>}
-            </>}
+            </div>}
         </>
     );
 };
