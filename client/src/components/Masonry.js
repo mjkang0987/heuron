@@ -13,8 +13,12 @@ export const Masonry = ({data}) => {
 
     const targetRef = useRef(null);
 
+    const setSliceItems = () => {
+        return data.slice(0, (pages * GRID_LENGTH > data.length ? data.length : pages * GRID_LENGTH));
+    };
+
     const onIntersect = ([{isIntersecting}]) => {
-        if (data.length === data.slice(0, (pages * GRID_LENGTH > data.length ? data.length : pages * GRID_LENGTH)).length) {
+        if (data.length === setSliceItems().length) {
             return;
         }
 
@@ -32,7 +36,7 @@ export const Masonry = ({data}) => {
     return (<div className="masonry">
             {Array(pages).fill(0).map((_, index) => <MasonryItems
                 key={`pages-${index}`}
-                items={data.slice(0, (pages * GRID_LENGTH > data.length ? data.length : pages * GRID_LENGTH))}
+                items={setSliceItems()}
                 index={index}/>
             )}
             <div

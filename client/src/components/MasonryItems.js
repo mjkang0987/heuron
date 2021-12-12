@@ -14,6 +14,10 @@ export const MasonryItems = ({items, index}) => {
     const [animate, setAnimate] = useState(false);
     const [img, setImg] = useState(null);
 
+    const setSliceItems = ({index}) => {
+        return items.slice(index * GRID_LENGTH, (index + 1) * GRID_LENGTH);
+    };
+
     const onOpen = ({source}) => {
         setOpen(true);
         setImg(source);
@@ -35,7 +39,7 @@ export const MasonryItems = ({items, index}) => {
 
     return (<div
             className={`items ${index % 2 === 0 ? 'left' : 'right'}`}>
-            {items.slice(index * GRID_LENGTH, (index + 1) * GRID_LENGTH).map((item, index) => <div
+            {setSliceItems({index}).map((item, index) => <div
                 key={`'item-${item.id}`}
                 className="item">
                 <div className="img-wrap">
