@@ -1,13 +1,15 @@
-import {useRef} from 'react';
+import {useRef, useState} from 'react';
 
 import {useDrag, useDrop} from 'react-dnd';
 
 import {EventDesc} from './EventDesc';
 import {LazyImage} from './LazyImage';
+import {useIntersection} from '../hooks/useIntersection';
 
 export const EventItem = ({id, index, source, findItem, moveItem}) => {
+    const [visible, setVisible] = useState(false);
+    const targetRef = useRef();
     const targetRefs = useRef([]);
-
 
     const originalIndex = findItem(id).index;
 
@@ -39,12 +41,24 @@ export const EventItem = ({id, index, source, findItem, moveItem}) => {
         }
     });
 
+    const onIntersect = ([{isIntersecting}]) => {
+        setVisible(isIntersecting);
+    };
+
+    const {setTarget} = useIntersection({
+        target   : targetRef,
+        onIntersect,
+        threshold: .1
+    });
+
     return (<div
             ref={node => drop(node)}
-            className="event-item">
+            className={`event-item${visible ? ' load' : ''}`}>
             <div
                 ref={node => drag(node)}>
-                <a href="/#">
+                <a
+                    href="/#"
+                    ref={setTarget}>
                     <span className="img-wrap">
                         <LazyImage
                             ref={el => targetRefs.current[index] = el}
